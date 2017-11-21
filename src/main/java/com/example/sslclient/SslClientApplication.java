@@ -2,30 +2,27 @@ package com.example.sslclient;
 
 import java.io.IOException;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.URI;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SslClientApplication {
 
 
-    public static void main(String[] args) throws ClientProtocolException, IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
-	CloseableHttpClient client = HttpClients.createDefault();
+	HttpClient client = new HttpClient();
+	GetMethod method = new GetMethod();
 	String uri = "https://ssl-server." + System.getenv("POD_NAMESPACE") + ".svc:8443/secured";
-	HttpResponse response;
+	method.setURI(new URI(uri, false));
 
 	while(true) {
-	    response = client.execute(new HttpGet(uri));
-	    String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
-	    System.out.println(responseString);
-	    Thread.sleep(10000);
+	    client.executeMethod(method);
+	    Thread.sleep(5000);
 	}
+
     }
 
 }

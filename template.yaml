@@ -61,7 +61,6 @@ objects:
                 apiVersion: v1
                 fieldPath: metadata.namespace
           image: ${APPLICATION_NAME}
-          imagePullPolicy: Always
           name: ${APPLICATION_NAME}
           volumeMounts:
             - name: keystore-volume

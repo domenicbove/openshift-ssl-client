@@ -1,15 +1,10 @@
 # OpenShift SSL Client
 
-To create OCP objects:
+To run the client run:
 ```
-oc process -f template.yml | oc create -f -
+oc process -f https://raw.githubusercontent.com/domenicbove/openshift-ssl-client/master/template.yaml | oc create -f -
 ```
-To build and run the image:
-```
-mvn clean package
-oc start-build ssl-client --from-file=target/ssl-client-0.0.1-SNAPSHOT.jar
-```
-After the build completes, a deployment will be triggered that calls into the ssl-server repeatedly
+This will automatically start a build and trigger a deployment.
 Check the logs to see the response from the server
 
 To cleanup

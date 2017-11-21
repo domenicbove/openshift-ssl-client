@@ -55,15 +55,11 @@ objects:
         - env:
           - name: JAVA_OPTIONS
             value: -Djavax.net.ssl.trustStore=/var/run/secrets/java.io/keystores/truststore.jks -Djavax.net.ssl.trustStorePassword=changeit
-#          - name: truststore_jks
-#            value: /var/run/secrets/java.io/keystores/truststore.jks
-#          - name: password
-#            value: changeit
-#          - name: POD_NAMESPACE
-#            valueFrom:
-#              fieldRef:
-#                apiVersion: v1
-#                fieldPath: metadata.namespace
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
           image: ${APPLICATION_NAME}
           imagePullPolicy: Always
           name: ${APPLICATION_NAME}

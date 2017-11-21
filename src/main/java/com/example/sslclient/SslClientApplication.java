@@ -55,7 +55,8 @@ public class SslClientApplication implements CommandLineRunner {
 	String uri = "https://ssl-server:8443/secured";
 	method.setURI(new URI(uri, false));
 
-	for (int i=0; i<30; i++) {
+	//for (int i=0; i<30; i++) {
+	while(true) {
 	    client.executeMethod(method);
 	    Thread.sleep(10000);
 	}

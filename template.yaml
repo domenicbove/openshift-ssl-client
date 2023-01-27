@@ -82,7 +82,7 @@ objects:
               mountPath: /var/run/secrets/java.io/keystores
         volumes:
           - name: keystore-volume
-            emtpyDir: {}
+            emptyDir: {}
     triggers:
     - imageChangeParams:
         automatic: true
